@@ -99,7 +99,7 @@ int main()
 *\brief Solicita un valor y lo devuelve.
 *\param Ninguno.
 *\return Devuelve El valor ingresado. Luego la variable en main adquiere el valor de "numero".
-*****************************************************************************************************/
+ *****************************************************************************************************/
 float ingresarNumero(void)
 {
     float numero;
@@ -191,7 +191,7 @@ float division(float numeroUno,float numeroDos)
 
 /**FUNCION FACTORIAL*********************************************************************************
 *\brief Recive un numero, lo factoriza y devuelve el resultado
-*\param numeroUno y numeroDos
+*\param numeroFactorial
 *\return El valor del factorial
 *****************************************************************************************************/
 int factorial(int numeroFactorial)
