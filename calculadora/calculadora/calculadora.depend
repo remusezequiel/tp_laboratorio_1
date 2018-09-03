@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1535735714 source:c:\users\ezequ\desktop\calculadora\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+
