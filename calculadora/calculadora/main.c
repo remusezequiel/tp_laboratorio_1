@@ -87,7 +87,7 @@ int main()
         }
 
         system("pause");
-        system("cls");
+
     }while(opcion < 6);
 
     return 0;
