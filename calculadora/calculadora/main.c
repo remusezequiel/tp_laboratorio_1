@@ -1,222 +1,124 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "biblioteca.h"
 /******************COMENTARIOS***********************************************************************
- * La calculadora toma valores flotantes y devuelve valores flotantes, exepto cuando se factoriza.
- * Hay una funcion para cada tarea realizada. Es decir, una que pide que ingreses la opcion, otra
- * para ingresar un numero y luego una para cada operacion matematica.
- *
+ * 1 Enunciado
+ *   Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
+ *  1. Ingresar 1er operando (A=x)
+ *  2. Ingresar 2do operando (B=y)
+ *  3. Calcular todas las operaciones
+ *   a) Calcular la suma (A+B)
+ *   b) Calcular la resta (A-B)
+ *   c) Calcular la division (A/B)
+ *   d) Calcular la multiplicacion (A*B)
+ *   e) Calcular el factorial (A!)
+ *  4. Informar resultados
+ *   a) “El resultado de A+B es: r”
+ *   b) “El resultado de A-B es: r”
+ *   c) “El resultado de A/B es: r” o “No es posible dividir por cero”
+ *   d) “El resultado de A*B es: r”
+ *   e) “El factorial de A es: r1 y El factorial de B es: r2”
+ *   5. Salir
+ *   • Todas las funciones matemáticas del menú se deberán realizar en una biblioteca aparte,
+ *   que contenga las funciones para realizar las cinco operaciones.
+ *   • En el menú deberán aparecer los valores actuales cargados en los operandos A y B
+ *   (donde dice “x” e “y” en el ejemplo, se debe mostrar el número cargado)
+ *   • Deberán contemplarse los casos de error (división por cero, etc)
+ *   • Documentar todas las funciones
  * -> NOMBRE Y APELLIDO: EZEQUIEL REMUS
  * -> DIVICION: 1° C
 ****************************************************************************************************/
 
-//****************DECLARACION DE FUNCIONES***********************************************************
-int ingresarOpcion(void);
-float ingresarNumero (void);
-float sumar(float,float);
-float resta(float,float);
-float producto(float,float);
-float division(float,float);
-int factorial(int);
-//***************************************************************************************************
 
 //*****************FUNCION PRINCIPAL*****************************************************************
 int main()
 {
     //VARIABLES:
-    int numeroFactorial;
+    //int numeroFactorial;
     float numeroUno;
     float numeroDos;
     int opcion;
+    int retornar=0;
+    int retornarDos=0;
 
-    //SE DAN A CONOCER LAS OPCIONES
-    printf("Ingrese una de las siguientes opciones:\n");
-    printf("1) Suma\n");
-    printf("2) Resta\n");
-    printf("3) Producto\n");
-    printf("4) Divicion\n");
-    printf("5) Factorial\n");
 
     //SENTENCIAS:
     do
     {
+    //SE DAN A CONOCER LAS OPCIONES
+        printf("Ingrese una de las siguientes opciones:\n");
+        printf("1. Ingresar 1er operando. \n");
+        printf("2. Ingresar 2do operando. \n");
+        printf("3. Calcular todas las operaciones. \n");
+        printf("4. Informar resultados.\n");
+        printf("5. Salir. \n");
+
         opcion = ingresarOpcion();                //LLAMO A LA FUNCION INGRESAR OPCION
 
         switch(opcion)
         {
-            case 1:                               //CASO DE LA SUMA
-                printf("Estas sumando\n");
+            case 1:                               //CASO QUE INGRESA EL PRIMER NUMERO
+                printf("Ingresa el primer operando: \n");
 
                 numeroUno = ingresarNumero();     //LLAMO A LA FUNCION INGRESAR NUMERO
-                numeroDos = ingresarNumero();     //LLAMO A LA FUNCION INGRESAR NUMERO
 
-                sumar(numeroUno,numeroDos);       //LLAMO A LA FUNCION SUMA
+                retornar=1;
             break;
-            case 2:                               //CASO DE LA RESTA
-                printf("Estas restando");
+            case 2:                               //CASO QUE INGRESA EL SEGUNDO NUMERO
 
-                numeroUno= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERO
-                numeroDos= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERO
-
-                resta(numeroUno,numeroDos);       //LLAMO A LA FUNCION RESTA
+                if(retornar==1)
+                {
+                    printf("Ingresa el segundo operando:");
+                    numeroDos= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERo
+                    retornarDos = 1;
+                }
+                else
+                {
+                    printf("Primero debes ingresar el primer operando:");
+                }
             break;
             case 3:
-                printf("Estas multiplicando");
+                printf("Estas realizando las operaciones");
+                if(retornar==0 && retornarDos==1)
+                {
+                    sumar(numeroUno,numeroDos);       //LLAMO A LA FUNCION SUMA
+                    resta(numeroUno,numeroDos);       //LLAMO A LA FUNCION RESTA
+                    producto(numeroUno,numeroDos);    //LLAMO A LA FUNCION PRODUCTO
+                    division(numeroUno,numeroDos);    //LLAMO A LA FUNCION DIVICION
+                    factorial((int)numeroUno);      //LLAMO A LA FUNCION FACTORIAL
+                }
+                else
+                {
+                    printf("Primero debes ingresar el primer operando y el segundo");
+                }
 
-                numeroUno= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERO
-                numeroDos= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERO
-
-                producto(numeroUno,numeroDos);    //LLAMO A LA FUNCION PRODUCTO
             break;
             case 4:
-                printf("Estas dividiendo");
+                printf("Los resultados de las operaciones son:");
 
-                numeroUno= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERO
-                numeroDos= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERO
+                printf("Suma: %f\n", sumar(numeroUno,numeroDos));
+                printf("Resta: %f\n", resta(numeroUno,numeroDos));
+                printf("Producto: %f\n", producto(numeroUno,numeroDos));
+                printf("Division: %f\n", division(numeroUno,numeroDos));
+                printf("Factorial: %d\n", factorial((int)numeroUno));
 
-                division(numeroUno,numeroDos);    //LLAMO A LA FUNCION DIVICION
             break;
             case 5:
-                printf("Estas factorizando");
+                    system("cls");
 
-                numeroFactorial= ingresarNumero();//LLAMO A LA FUNCION INGRESAR NUMERO
-
-                factorial(numeroFactorial);      //LLAMO A LA FUNCION FACTORIAL
-                break;
+            break;
             default :
                 printf("no es una opcion valida");
         }
 
         system("pause");
-
     }while(opcion < 6);
 
     return 0;
 }
 //***************************************************************************************************
 
-//****************************FUNCIONES**************************************************************
-/**FUNCION INGRESAR NUMERO***************************************************************************
-*\brief Solicita un valor y lo devuelve.
-*\param Ninguno.
-*\return Devuelve El valor ingresado. Luego la variable en main adquiere el valor de "numero".
- *****************************************************************************************************/
-float ingresarNumero(void)
-{
-    float numero;
 
-    printf("\n Ingrese un numero:");
-    scanf(" %f", &numero);
-
-    return numero;
-}
-
-/**FUNCION INGRESAR OPCION***************************************************************************
-*\brief Solicita un valor y lo devuelve.
-*\param Ninguno.
-*\return Devuelve el valor de la opcion. Luego la variable en main adquiere el valor de "opcion".
-*****************************************************************************************************/
-int ingresarOpcion(void)
-{
-    int opcion;
-
-    printf("ingrese una opcion:");
-    scanf(" %d", &opcion);
-
-    return opcion;
-}
-
-/**FUNCION SUMA**************************************************************************************
-*\brief Recive dos numeros, los suma y devuelve el resultado
-*\param numeroUno y numeroDos
-*\return Devuelve el valor de la suma
-*****************************************************************************************************/
-float sumar(float numeroUno,float numeroDos)
-{
-    float suma;
-
-    suma=numeroUno+numeroDos;
-
-    printf("La suma es: %f\n", suma);
-
-    return suma;
-}
-
-/**FUNCION RESTA*************************************************************************************
-*\brief Recive dos numeros, los resta y devuelve el resultado
-*\param numeroUno y numeroDos
-*\return Devuelve el valor de la resta
-*****************************************************************************************************/
-float resta(float numeroUno,float numeroDos)
-{
-    float resta;
-
-    resta = numeroUno-numeroDos;
-
-    printf("La resta es: %f \n", resta);
-
-    return resta;
-}
-
-/**FUNCION PRODUCTO**********************************************************************************
-*\brief Recive dos numeros, los multiplica y devuelve el resultado
-*\param numeroUno y numeroDos
-*\return Devuelve el producto
-*****************************************************************************************************/
-float producto(float numeroUno,float numeroDos)
-{
-    float producto;
-
-    producto=numeroUno*numeroDos;
-
-    printf("El producto es: %f\n", producto);
-
-    return producto;
-}
-
-/**FUNCION DIVISION**********************************************************************************
-*\brief Recive dos numeros, los divide y devuelve el resultado
-*\param numeroUno y numeroDos
-*\return El valor de la division
-*****************************************************************************************************/
-float division(float numeroUno,float numeroDos)
-{
-    float division;
-
-    division=(float)numeroUno/(float)numeroDos;
-
-    printf("La division es: %f\n", division);
-
-    return division;
-}
-
-/**FUNCION FACTORIAL*********************************************************************************
-*\brief Recive un numero, lo factoriza y devuelve el resultado
-*\param numeroFactorial
-*\return El valor del factorial
-*****************************************************************************************************/
-int factorial(int numeroFactorial)
-{
-    int factorial = 1;
-    int numero;
-
-    numero = numeroFactorial;
-
-    if (numero == 0)
-        {
-            factorial = 1;
-        }
-    else
-        {
-            for (numero = numeroFactorial; numero > 1; numero--)
-                {
-                    factorial = factorial * numero;
-                }
-        }
-
-    printf("El factorial del numero es: %d \n", factorial);
-
-    return factorial;
-}
 
 
 

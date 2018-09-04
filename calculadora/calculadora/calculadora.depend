@@ -3,3 +3,22 @@
 	<stdio.h>
 	<stdlib.h>
 
+1536022623 source:c:\users\ezequiel\desktop\calculadora\tp_laboratorio_1\calculadora\calculadora\biblioteca.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536019992 c:\users\ezequiel\desktop\calculadora\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
+
+1536024143 source:c:\users\ezequiel\desktop\calculadora\tp_laboratorio_1\calculadora\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536022624 source:c:\users\alumno\desktop\tp_laboratorio_1\calculadora\calculadora\biblioteca.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536019994 c:\users\alumno\desktop\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
+
