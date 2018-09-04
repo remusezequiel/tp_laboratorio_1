@@ -22,3 +22,22 @@
 
 1536019994 c:\users\alumno\desktop\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
 
+1536083046 source:e:\tp_laboratorio_1\calculadora\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536083424 e:\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
+
+1536083656 source:e:\tp_laboratorio_1\calculadora\calculadora\biblioteca.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536090352 source:f:\tp_laboratorio_1\calculadora\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536083424 f:\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
+

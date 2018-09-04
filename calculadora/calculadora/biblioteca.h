@@ -1,11 +1,11 @@
 
 //****************DECLARACION DE FUNCIONES***********************************************************
-int ingresarOpcion(void);
-float ingresarNumero (void);
-float sumar(float,float);
-float resta(float,float);
-float producto(float,float);
-float division(float,float);
-int factorial(int);
+int ingresarOpcion(void);//PROTOTIPO ingresarOpcion
+float ingresarNumero (void);//PROTOTIPO ingresarNumero
+float sumar(float,float);//PROTOTIPO  sumar
+float resta(float,float);//PROTOTIPO restar
+float producto(float,float);//PROTOTIPO producto
+float division(float,float);//PROTOTIPO division
+int factorial(float);//PROTOTIPO factorial
 //***************************************************************************************************
 

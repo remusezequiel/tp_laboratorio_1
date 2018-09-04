@@ -58,7 +58,7 @@ int main()
         switch(opcion)
         {
             case 1:                               //CASO QUE INGRESA EL PRIMER NUMERO
-                printf("Ingresa el primer operando: \n");
+                printf("\n Ingresa el primer operando: \n");
 
                 numeroUno = ingresarNumero();     //LLAMO A LA FUNCION INGRESAR NUMERO
 
@@ -68,19 +68,22 @@ int main()
 
                 if(retornar==1)
                 {
-                    printf("Ingresa el segundo operando:");
+                    printf("\n Ingresa el segundo operando: \n");
                     numeroDos= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERo
                     retornarDos = 1;
+                    retornar=0;
                 }
                 else
                 {
-                    printf("Primero debes ingresar el primer operando:");
+                    printf("\n Primero debes ingresar el primer operando: \n");
                 }
             break;
             case 3:
-                printf("Estas realizando las operaciones");
+                printf("\n Estas realizando las operaciones \n");
                 if(retornar==0 && retornarDos==1)
                 {
+                    retornar=1;
+                    retornarDos=0;
                     sumar(numeroUno,numeroDos);       //LLAMO A LA FUNCION SUMA
                     resta(numeroUno,numeroDos);       //LLAMO A LA FUNCION RESTA
                     producto(numeroUno,numeroDos);    //LLAMO A LA FUNCION PRODUCTO
@@ -89,30 +92,37 @@ int main()
                 }
                 else
                 {
-                    printf("Primero debes ingresar el primer operando y el segundo");
+                    printf("\n Primero debes ingresar el primer operando y el segundo \n");
                 }
 
             break;
             case 4:
-                printf("Los resultados de las operaciones son:");
+                printf("\n Los resultados de las operaciones son: \n");
 
-                printf("Suma: %f\n", sumar(numeroUno,numeroDos));
-                printf("Resta: %f\n", resta(numeroUno,numeroDos));
-                printf("Producto: %f\n", producto(numeroUno,numeroDos));
-                printf("Division: %f\n", division(numeroUno,numeroDos));
-                printf("Factorial: %d\n", factorial((int)numeroUno));
-
+                if(retornar==1 && retornarDos==0)
+                {
+                    retornar=0;
+                    //ESCRIBO RESULTADOS EN PANTALLA
+                    printf("Suma: %f\n", sumar(numeroUno,numeroDos));
+                    printf("Resta: %f\n", resta(numeroUno,numeroDos));
+                    printf("Producto: %f\n", producto(numeroUno,numeroDos));
+                    printf("Division: %f\n", division(numeroUno,numeroDos));
+                    printf("Factorial del primer numero: %d\n", factorial(numeroUno));
+                    printf("Factorial del segundo numero: %d\n", factorial(numeroDos));
+                }
+                else
+                {
+                    printf("\n Primero debes ingresar el primer operando y el segundo \n");
+                }
             break;
             case 5:
-                    system("cls");
-
             break;
             default :
-                printf("no es una opcion valida");
+                printf("\n No es una opcion valida\n");
         }
+       // system("pause");
+    }while(opcion < 5);
 
-        system("pause");
-    }while(opcion < 6);
 
     return 0;
 }

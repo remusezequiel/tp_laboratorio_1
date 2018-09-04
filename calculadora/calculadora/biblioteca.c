@@ -11,7 +11,7 @@ float ingresarNumero(void)
 {
     float numero;
 
-    printf("\n Ingrese un numero:");
+    printf("\n Ingrese un numero: \n");
     scanf(" %f", &numero);
 
     return numero;
@@ -26,7 +26,7 @@ int ingresarOpcion(void)
 {
     int opcion;
 
-    printf("ingrese una opcion:");
+    printf("\n Ingrese una opcion: \n");
     scanf(" %d", &opcion);
 
     return opcion;
@@ -95,38 +95,46 @@ float division(float numeroUno,float numeroDos)
     }
     else
     {
-        printf("No esta definido dividir por 0");
+        printf("\nNo esta definido dividir por 0\n");
     }
     //printf("La division es: %f\n", division);
 
     return division;
 }
 
-/**FUNCION FACTORIAL*********************************************************************************
+/**FUNCION FACTORIAL*UNO*********************************************************************************
 *\brief Recive un numero, lo factoriza y devuelve el resultado
-*\param numeroFactorial
+*\param EL parametro va a ser numero. Aca numero tomara el valor ingresado
+    (numeroUno o numeroDos) y va a realizar las operaciones
 *\return El valor del factorial
 *****************************************************************************************************/
-int factorial(int numeroFactorial)
+int factorial(float numero)
 {
     int factorial = 1;
-    int numero;
-
-    numero = numeroFactorial;
+    //float i;
+    int enteroDelNumero;
+    //i=numero;
+    enteroDelNumero=(int)numero;
 
     if (numero == 0)
+    {
+        factorial = 1;
+    }
+    else if ((numero - enteroDelNumero) == 0 )
+    {
+        for (numero = numero; numero >= 1; numero--)
         {
-            factorial = 1;
+            factorial = factorial * numero;
         }
+    }
     else
-        {
-            for (numero = numeroFactorial; numero > 1; numero--)
-                {
-                    factorial = factorial * numero;
-                }
-        }
+    {
+        printf("\nNo se pueden hacer factoriales de numeros con coma\n");
+    }
 
     //printf("El factorial del numero es: %d \n", factorial);
 
     return factorial;
 }
+
+/********************************************************************************************/
