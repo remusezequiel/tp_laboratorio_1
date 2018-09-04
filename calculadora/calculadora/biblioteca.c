@@ -102,7 +102,7 @@ float division(float numeroUno,float numeroDos)
     return division;
 }
 
-/**FUNCION FACTORIAL*UNO*********************************************************************************
+/**FUNCION FACTORIAL*********************************************************************************
 *\brief Recive un numero, lo factoriza y devuelve el resultado
 *\param EL parametro va a ser numero. Aca numero tomara el valor ingresado
     (numeroUno o numeroDos) y va a realizar las operaciones
