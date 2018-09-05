@@ -43,8 +43,6 @@ float sumar(float numeroUno,float numeroDos)
 
     suma=numeroUno+numeroDos;
 
-    //printf("La suma es: %f\n", suma);
-
     return suma;
 }
 
@@ -59,8 +57,6 @@ float resta(float numeroUno,float numeroDos)
 
     resta = numeroUno-numeroDos;
 
-    //printf("La resta es: %f \n", resta);
-
     return resta;
 }
 
@@ -74,8 +70,6 @@ float producto(float numeroUno,float numeroDos)
     float producto;
 
     producto=numeroUno*numeroDos;
-
-    //printf("El producto es: %f\n", producto);
 
     return producto;
 }
@@ -97,7 +91,7 @@ float division(float numeroUno,float numeroDos)
     {
         printf("\nNo esta definido dividir por 0\n");
     }
-    //printf("La division es: %f\n", division);
+
 
     return division;
 }
@@ -111,9 +105,8 @@ float division(float numeroUno,float numeroDos)
 int factorial(float numero)
 {
     int factorial = 1;
-    //float i;
     int enteroDelNumero;
-    //i=numero;
+
     enteroDelNumero=(int)numero;
 
     if (numero == 0)
@@ -132,7 +125,6 @@ int factorial(float numero)
         printf("\nNo se pueden hacer factoriales de numeros con coma\n");
     }
 
-    //printf("El factorial del numero es: %d \n", factorial);
 
     return factorial;
 }

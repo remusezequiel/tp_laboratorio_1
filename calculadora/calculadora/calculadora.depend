@@ -48,3 +48,15 @@
 
 1536094190 c:\users\ezequiel\desktop\repositorio\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
 
+1536177769 source:c:\users\ezequiel\desktop\calcucladora\tp_laboratorio_1\calculadora\calculadora\biblioteca.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+
+1536176771 c:\users\ezequiel\desktop\calcucladora\tp_laboratorio_1\calculadora\calculadora\biblioteca.h
+
+1536178304 source:c:\users\ezequiel\desktop\calcucladora\tp_laboratorio_1\calculadora\calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca.h"
+

@@ -34,7 +34,7 @@
 int main()
 {
     //VARIABLES:
-    //int numeroFactorial;
+
     float numeroUno;
     float numeroDos;
     int opcion;
@@ -46,10 +46,15 @@ int main()
     do
     {
     //SE DAN A CONOCER LAS OPCIONES
-        printf("Ingrese una de las siguientes opciones:\n");
-        printf("1. Ingresar 1er operando. \n");
-        printf("2. Ingresar 2do operando. \n");
+        printf("\n Ingrese una de las siguientes opciones: \n");
+        printf("1. Ingresar 1er operando. A=%f\n", numeroUno);
+        printf("2. Ingresar 2do operando. B=%f\n", numeroDos);
         printf("3. Calcular todas las operaciones. \n");
+        printf("a) Calcular la suma (A+B) \n");
+        printf("b)Calcular la resta (A-B) \n");
+        printf("c) Calcular la division (A/B) \n");
+        printf("d) Calcular la multiplicacion (A*B) \n");
+        printf("e) Calcular el factorial (A!)\n");
         printf("4. Informar resultados.\n");
         printf("5. Salir. \n");
 
@@ -70,11 +75,11 @@ int main()
                 {
                     printf("\n Ingresa el segundo operando: \n");
                     numeroDos= ingresarNumero();      //LLAMO A LA FUNCION INGRESAR NUMERo
-                    retornarDos = 1;
                     retornar=0;
+                    retornarDos = 1;
                 }
                 else
-                {
+                {   //ANUNCIO QUE LA OPCION ES INCORRECTA
                     printf("\n Primero debes ingresar el primer operando: \n");
                 }
             break;
@@ -83,7 +88,6 @@ int main()
                 if(retornar==0 && retornarDos==1)
                 {
                     retornar=1;
-                    retornarDos=0;
                     sumar(numeroUno,numeroDos);       //LLAMO A LA FUNCION SUMA
                     resta(numeroUno,numeroDos);       //LLAMO A LA FUNCION RESTA
                     producto(numeroUno,numeroDos);    //LLAMO A LA FUNCION PRODUCTO
@@ -91,27 +95,28 @@ int main()
                     factorial((int)numeroUno);      //LLAMO A LA FUNCION FACTORIAL
                 }
                 else
-                {
+                {   //ANUNCIO QUE LA OPCION ES INCORRECTA
                     printf("\n Primero debes ingresar el primer operando y el segundo \n");
                 }
 
             break;
             case 4:
-                printf("\n Los resultados de las operaciones son: \n");
-
-                if(retornar==1 && retornarDos==0)
+                if(retornar == 1 && retornarDos == 1)
                 {
-                    retornar=0;
+                    printf("\n Los resultados de las operaciones son: \n");
+
+                    retornar = 0;
+                    retornarDos = 0;
                     //ESCRIBO RESULTADOS EN PANTALLA
-                    printf("Suma: %f\n", sumar(numeroUno,numeroDos));
-                    printf("Resta: %f\n", resta(numeroUno,numeroDos));
-                    printf("Producto: %f\n", producto(numeroUno,numeroDos));
-                    printf("Division: %f\n", division(numeroUno,numeroDos));
-                    printf("Factorial del primer numero: %d\n", factorial(numeroUno));
-                    printf("Factorial del segundo numero: %d\n", factorial(numeroDos));
+                    printf("a) El resultado de A+B es:  %f\n", sumar(numeroUno,numeroDos));
+                    printf("b) El resultado de A-B es: %f\n", resta(numeroUno,numeroDos));
+                    printf("c) El resultado de A/B es: %f\n", division(numeroUno,numeroDos));
+                    printf("d) El resultado de A*B es: %f\n", producto(numeroUno,numeroDos));
+                    printf("e)Factorial del primer numero: %d\n", factorial(numeroUno));
+                    printf("f)Factorial del segundo numero: %d\n", factorial(numeroDos));
                 }
                 else
-                {
+                {   //ANUNCIO QUE LA OPCION ES INCORRECTA
                     printf("\n Primero debes ingresar el primer operando y el segundo \n");
                 }
             break;
