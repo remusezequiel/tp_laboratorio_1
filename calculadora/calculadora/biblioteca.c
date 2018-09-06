@@ -83,15 +83,7 @@ float division(float numeroUno,float numeroDos)
 {
     float division;
 
-    if(numeroDos!=0)
-    {
     division=(float)numeroUno/(float)numeroDos;
-    }
-    else
-    {
-        printf("\nNo esta definido dividir por 0\n");
-    }
-
 
     return division;
 }
@@ -120,12 +112,6 @@ int factorial(float numero)
             factorial = factorial * numero;
         }
     }
-    else
-    {
-        printf("\nNo se pueden hacer factoriales de numeros con coma\n");
-    }
-
-
     return factorial;
 }
 

@@ -25,7 +25,12 @@
  *   (donde dice “x” e “y” en el ejemplo, se debe mostrar el número cargado)
  *   • Deberán contemplarse los casos de error (división por cero, etc)
  *   • Documentar todas las funciones
- * -> NOMBRE Y APELLIDO: EZEQUIEL REMUS
+ *
+ *  ->  OBSERVACIÓN: Los numeros ingresados siempre seran float. Se podria disminuir la cantidad de
+ *    decimales pero lo obvie como posibilidad ya que no esta aclarado en el enunciado si los numeros
+ *    ingresados eran con decimales o enteros, o de ser decimales cuantos lugares despues de la coma
+ *    se deberian respetar
+ *-> NOMBRE Y APELLIDO: EZEQUIEL REMUS
  * -> DIVICION: 1° C
 ****************************************************************************************************/
 
@@ -108,24 +113,54 @@ int main()
                     retornar = 0;
                     retornarDos = 0;
                     //ESCRIBO RESULTADOS EN PANTALLA
-                    printf("a) El resultado de A+B es:  %f\n", sumar(numeroUno,numeroDos));
-                    printf("b) El resultado de A-B es: %f\n", resta(numeroUno,numeroDos));
-                    printf("c) El resultado de A/B es: %f\n", division(numeroUno,numeroDos));
-                    printf("d) El resultado de A*B es: %f\n", producto(numeroUno,numeroDos));
-                    printf("e)Factorial del primer numero: %d\n", factorial(numeroUno));
-                    printf("f)Factorial del segundo numero: %d\n", factorial(numeroDos));
+                    printf("a) El resultado de %f+%f es:  %f\n",numeroUno,numeroDos, sumar(numeroUno,numeroDos));
+                    printf("b) El resultado de %f-%f es: %f\n",numeroUno,numeroDos, resta(numeroUno,numeroDos));
+
+                   if(numeroDos!=0)//division
+                   {
+                        printf("c) El resultado de %f/%f es: %f\n",numeroUno,numeroDos, division(numeroUno,numeroDos));
+                   }
+                   else
+                    {
+                        printf("\nNo esta definido dividir por 0\n");
+                    }
+
+                    printf("d) El resultado de %f*%f es: %f\n",numeroUno,numeroDos, producto(numeroUno,numeroDos));
+
+                    if((numeroUno-(int)numeroUno)==0)//factorial del numeroUno
+                    {
+                        printf("e)Factorial de %f: %d\n",numeroUno, factorial(numeroUno));
+                    }
+                    else
+                    {
+                        printf("\n No se pueden hacer factoriales de numeros con coma \n");
+                    }
+
+                    if((numeroUno-(int)numeroUno)==0)//factorial del numeroDos
+                    {
+                         printf("f)Factorial de %f: %d\n",numeroDos, factorial(numeroDos));
+
+                    }
+                    else
+                    {
+                        printf("\n No se pueden hacer factoriales de numeros con coma \n");
+                    }
+
                 }
                 else
                 {   //ANUNCIO QUE LA OPCION ES INCORRECTA
                     printf("\n Primero debes ingresar el primer operando y el segundo \n");
                 }
+                system("pause");
+                system("cls");
             break;
             case 5:
             break;
             default :
                 printf("\n No es una opcion valida\n");
         }
-       // system("pause");
+        system("pause");
+        system("cls");
     }while(opcion < 5);
 
 
