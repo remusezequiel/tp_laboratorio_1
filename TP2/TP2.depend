@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1538597965 source:c:\users\ezequ\desktop\tp_laboratorio_1\tp2\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"variousfunctions.h"
+
+1538620262 c:\users\ezequ\desktop\tp_laboratorio_1\tp2\tp2\arrayemployees.h
+
+1538612249 source:c:\users\ezequ\desktop\tp_laboratorio_1\tp2\tp2\variousfunctions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"variousfunctions.h"
+
+1538608827 c:\users\ezequ\desktop\tp_laboratorio_1\tp2\tp2\variousfunctions.h
+
+1538620262 source:c:\users\ezequ\desktop\tp_laboratorio_1\tp2\tp2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"variousfunctions.h"
+
+1541819592 source:c:\users\ezequ\desktop\programacion\trabajos practicos de programacion\tp_2\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"variousfunctions.h"
+
+1541819396 c:\users\ezequ\desktop\programacion\trabajos practicos de programacion\tp_2\tp2\arrayemployees.h
+
+1541722431 c:\users\ezequ\desktop\programacion\trabajos practicos de programacion\tp_2\tp2\variousfunctions.h
+
+1541772370 source:c:\users\ezequ\desktop\programacion\trabajos practicos de programacion\tp_2\tp2\variousfunctions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"variousfunctions.h"
+
+1541819592 source:c:\users\ezequ\desktop\programacion\trabajos practicos de programacion\tp_2\tp2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"variousfunctions.h"
+

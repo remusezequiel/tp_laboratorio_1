@@ -7,13 +7,7 @@
 #define LEN 5
 
 /****************COMENTARIO APARTE********************************************************
-    1)ESTE TRABAJO NO ESTA TERMINADO DEBIDO A QUE NO ESTABA ENTERADO NI DE LA FECHA DE
-    ENTREGA NI DE QUE LA CONSIGNA ESTABA SUBIDA. LO EMPESE EL MISMO DIA DE LA FECHA.
-    DISCULPE LAS MOLESTIAS Y EL COMENTARIO.
 
-    2)AL VER QUE EN EL PDF ESTABAN LAS FUNCIONES DECLARADAS CON CIERTOS NOMBRES Y EN
-    INGLES, TRATE DE HACER TODAS LAS FUNCIONES EN INGLES, EVITANDO COMENTARIOS EN INGLES
-    YA QUE NO TENGO UN INGLES SUMAMENTE BUENO Y ME PODIA EXPLICAR DE MALA MANERA
 *****************************************************************************************/
 /******************************CONSIGNA***************************************************
 NOMBRE: Ezequiel
@@ -35,45 +29,58 @@ DIVISION: 1.C
 int main()
 {
       system("color 1F");
-
 /*________________________________VARIABLES_______________________________________________*/
     int opcion;
 
     // Tipo struct y se inicializa
     Employee employer[LEN];///VARIABLE
     initEmployees(employer,LEN);///FUNCION INICIALIZADORA
+    hardcode(employer,LEN);
 
 /*_______________________________________________________________________________________*/
     // Carga datos de test
-
-
     do
     {
-
         //MOSTRAR MENU DE OPCIONES
         optionMenu();
         //PIDO Y GUARDO LA OPCION
-        opcion = getOption();
+        opcion = getOption("Ingrese una opcion del menu: \n","\n!->ERROR!. No es una opcion valida\n",1,4);
         //PEDIR OPCION
         switch(opcion)
         {
             case 1: // OPCION (1)
                 printf("ALTAS \n");
                 chargeEmployer(employer,LEN);
-                printEmployees(employer,LEN);
+               // printEmployees(employer,LEN);
             break;
             case 2: // OPCION (2)
                 //FUNCIONES DE LA OPCION
                 printf("MODIFICAR\n");
+                editEmployers(employer,LEN);
             break;
             case 3: // OPCION (3)
                 //FUNCIONES DE LA OPCION
-                printf("BAJA");
-                //removeEmployee(myEmployer,LEN);
+                takeOffSystemEmployee(employer,LEN);
             break;
             case 4: // OPCION (4)
                 //FUNCIONES DE LA OPCION
-                printf("INFORMAR");
+                do{
+                    printf("INFORMAR\n");
+                    infoMenu();
+                    opcion = getOption("Ingrese una opcion del menu: \n","\n!->ERROR!. No es una opcion valida\n",1,3);
+                    switch(opcion)
+                    {
+                        case 1:
+                                order(employer,LEN);
+                            break;
+                        case 2:
+                                averageReport(employer,LEN);
+                            break;
+                        case 3:
+                                printf("\t\a*Salida!\n");
+                            break;
+                    }
+                }while(opcion!=3);
             break;
             case 5: // OPCION (5)
                 //FUNCIONES DE LA OPCION
@@ -87,7 +94,7 @@ int main()
                 break;
         }
 
-    }while(opcion != 6);
+    }while(opcion != 5);
 
     return 0;
 
