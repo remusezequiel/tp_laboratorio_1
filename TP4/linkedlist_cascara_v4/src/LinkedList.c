@@ -101,12 +101,12 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     int returnAux = -1;
-    Node* new_pNode = (Node*)malloc(sizeof(Node));//Reservo memoria para un nuevo nodo
-    Node* next_pElement = NULL;//Siguiente elemento
-    Node* previous_pElement = NULL;//Elemento anterior
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this))//Si se dan estas condiciones
     {
+        Node* new_pNode = (Node*)malloc(sizeof(Node));//Reservo memoria para un nuevo nodo
+        Node* next_pElement = NULL;//Siguiente elemento
+        Node* previous_pElement = NULL;//Elemento anterior
         next_pElement=getNode(this,nodeIndex);//A este puntero a nodo le lotordamos el nodo obtenido a partir de la funcion get mediante los parametros anterirmente pasados a la funcion
         new_pNode->pNextNode = next_pElement;//Al nodo del heap se le pasa el valor obtenido mediante el get
         if(nodeIndex==0)//Ahora, si el indice es cero
@@ -157,7 +157,7 @@ int ll_add(LinkedList* this, void* pElement)
     {
        len = ll_len(this);//Cuento la lista
        addNode(this, len, pElement);//Se agrega un nodo a la lista en el indice indicado por la cantidad de elementos que tiene la lita
-       returnAux = 0;//La funcion devuelve 0
+       returnAux = 0;//La funcion devuelve 0 Si esta todo ok
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -174,13 +174,13 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
-    void* returnAux = NULL;
-    Node* pNode;
+    void* returnAux = NULL;//Si esta todo m,al, retorna NULL
+    Node* pNode=NULL;//Declaro un puntero a nodo
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this!=NULL && index>=0 && index<ll_len(this))
     {
-        pNode=getNode(this,index);
-        returnAux=pNode->pElement;
+        pNode=getNode(this,index);//Hago un getNode sobre el indice pasado como parametro
+        returnAux=pNode->pElement;//Retorno el elemento del nodo obtenido
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -199,13 +199,13 @@ int ll_set(LinkedList* this, int index,void* pElement)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     int returnAux = -1;
-    Node* pNode;
+    Node* pNode=NULL;//Declaro un puntero a nodo
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this!=NULL && index>=0 && index<ll_len(this))
     {
-        pNode=getNode(this,index);
-        pNode->pElement=pElement;
-        returnAux=0;
+        pNode=getNode(this,index);//Obtengo el nodo para modificar
+        pNode->pElement=pElement;//Al nodo obtenido le Asigno el valor pasado como parametro
+        returnAux=0;//Si esta todo vien retorna 0
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -223,7 +223,7 @@ int ll_remove(LinkedList* this,int index)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     int returnAux = -1;
-    Node* remove_pNode;//Declaracion del puntero a nodo donde se guarda el nodo (que representa al elemento) a borrar
+    Node* remove_pNode=NULL;//Declaracion del puntero a nodo donde se guarda el nodo (que representa al elemento) a borrar
     Node* next_pElement = NULL;//Siguiente Nodo
     Node* previous_pElement = NULL;//Anterior Nodo
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
@@ -232,16 +232,16 @@ int ll_remove(LinkedList* this,int index)
         remove_pNode=getNode(this, index);//Obtenemos a partir del indice pasado a la funcion cual es el nodo a borrar
         next_pElement=remove_pNode->pNextNode;//Al siguiente nodo le pedimos que se pare en el nodo siguiente al
         if(index==0)
-        {   //En el caso que el nodo a eliminar sea el primer nodo se
+        {   //En el caso que el nodo a eliminar sea el primer nodo
             this->pFirstNode=remove_pNode;
         }
         else
-        {
-            previous_pElement = getNode(this,index-1);
-            previous_pElement->pNextNode = next_pElement;
+        {  //En el caso que no sea el indice 0
+            previous_pElement=getNode(this,index-1);//Tomo el nodo anterior al indice que se ingresa por parametro
+            previous_pElement->pNextNode = next_pElement;//Le asigno el next_pElement al nodo que representa al nodo anterior al ingresado por parametro
         }
-        free(remove_pNode);
-        this->size = this->size - 1;
+        free(remove_pNode);//Borro de la memoria lo que esta en remove_pNode
+        this->size = this->size - 1;//Se reduce el size del LinkedList
         returnAux=0;
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
@@ -260,18 +260,18 @@ int ll_clear(LinkedList* this)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     int returnAux = -1;
-    int i;
-    int len;
+    int i;//iterador
+    int len;//representara al tamaño del linkedList
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this != NULL)
     {
-        len=ll_len(this);
-        while(i<len)
+        len=ll_len(this);//Cuento cuantos elementos hay en la lista
+        while(i<len)//Mientras el contador es emnor a la cantidad de elementos presentes en el linkedList
         {
-            ll_remove(this,i);
+            ll_remove(this,i);//Hago un remove de cada elemento
             i++;
         }
-        returnAux=0;
+        returnAux=0;//Cuando termina el proceso retorna 0
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -290,10 +290,10 @@ int ll_deleteLinkedList(LinkedList* this)
     int returnAux = -1;
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
      if(this != NULL)
-    {
-        ll_clear(this);
-        free(this);
-        returnAux = 0;
+    {//Si se cumplen las condiciones
+        ll_clear(this);//Hago un clear de la linkedList pasada como parametro
+        free(this);//Libero la memoria de toda la linkedList
+        returnAux = 0;//Devuelvo 0
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -311,19 +311,20 @@ int ll_indexOf(LinkedList* this, void* pElement)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     int returnAux = -1;
-    int i=0;
-    int len ;
-    Node* pNodo;
+    int i=0;//Iterador
+    int len ;//Representa la cantidad de elementos de la linkedList
+    Node* pNodo=NULL;
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this!=NULL)
     {
-        len=ll_len(this);
-        while(i<len)
+        len=ll_len(this);//Cuento cuantos elementos hay en la lista
+        while(i<len)//MIentras se cumpla esto
         {
-            pNodo=getNode(this,i);
+            pNodo=getNode(this,i);//Obtendo el nodo del indice "i"
             if(pNodo->pElement==pElement)
-            {
-                returnAux = i;
+            {//Si el elemento del nodo obtenido es igual al elemento del parametro
+                returnAux=i;//Devuelvo el indice del elemento
+                break;
             }
             i++;
         }
@@ -346,13 +347,14 @@ int ll_isEmpty(LinkedList* this)
     int returnAux = -1;
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this!=NULL)
-    {
+    {//si se cumple la condicion
         if(this->size>0)
-        {
-            returnAux=0;
+        {//Si el size es mayor que 0
+            returnAux=0;//retorno 0
         }
-        else{
-            returnAux=1;
+        else
+        {//Si es menor o igual a 0
+            returnAux=1;//retorno 1
         }
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
@@ -374,9 +376,9 @@ int ll_push(LinkedList* this, int index, void* pElement)
     int returnAux = -1;
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
      if(this!=NULL && index>=0 && index<=ll_len(this))
-     {
+     {//Si se cumplen las condiciones agrego un elemento en el inice pasado por parametro
         addNode(this, index, pElement);
-        returnAux=0;
+        returnAux=0;//Retorno 0 si esta todo bien
      }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -393,12 +395,12 @@ int ll_push(LinkedList* this, int index, void* pElement)
 void* ll_pop(LinkedList* this,int index)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
-    void* returnAux = NULL;
+    void* returnAux = NULL;//Retorna NULL si no se cumplen las condiciones
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this!=NULL && index>=0 && index<=ll_len(this))
-    {
-        returnAux=ll_get(this,index);
-        ll_remove(this,index);
+    {//Si se cumplen las condiciones
+        returnAux=ll_get(this,index);//Primero retorno el puntero del indice pasado como parametro.
+        ll_remove(this,index);//Despues lo borro. Si primero lo borrase no podria retornarlo.
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
@@ -420,12 +422,12 @@ int ll_contains(LinkedList* this, void* pElement)
     if(this != NULL)
     {
         if(ll_indexOf(this,pElement)!=-1)
-        {
-            returnAux=1;
+        {//Si el indice del elemento contiene al elemento
+            returnAux=1;//la funcion va retornar 1
         }
         else
-        {
-            returnAux=0;
+        {//Si el indice del elemento no Contiene al elemento
+            returnAux=0;//la funcion va retornar 0
         }
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
@@ -444,28 +446,28 @@ int ll_contains(LinkedList* this, void* pElement)
 int ll_containsAll(LinkedList* this,LinkedList* this2)
 {
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
-    void* pElement;
+    void* pElement;//Declaro un tipo generico para representar a un elemento
     int returnAux = -1;
-    int i;
-    int len;
+    int i;//iterador
+    int len;//Representa la cantidad de elementos de la linkedList
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     if(this != NULL && this2 != NULL)
     {
-        returnAux = 1;
-        len=ll_len(this2);
+        returnAux = 1;//Si los elementos de (this2) estan contenidos en la lista (this)
+        len=ll_len(this2);//Me fijo cuantos elementos hay en la lista 2
         for(i = 0; i<len; i++)
         {
-            pElement = ll_get(this2,i);
+            pElement=ll_get(this2,i);//Tomo el elemento "i" de la lista 2
             if(!ll_contains(this,pElement))
-            {
-                returnAux = 0;
+            {//Si la lista 1 no contiene al elemento "i" de la lista 2
+                returnAux = 0;//si los elementos de (this2) NO estan contenidos en la lista (this)
             }
-      }
+        }
     }
 ///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
 }
-
+///ll_subList FUNCTION_________________________________________________________//////////////////////
 /** \brief Crea y retorna una nueva lista con los elementos indicados
  *
  * \param pList LinkedList* Puntero a la lista
@@ -488,7 +490,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 }
 
 
-
+///ll_clone FUNCTION______________________________________________________________///////////////////
 /** \brief Crea y retorna una nueva lista con los elementos de la lista pasada como parametro
  *
  * \param pList LinkedList* Puntero a la lista
@@ -497,11 +499,11 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 */
 LinkedList* ll_clone(LinkedList* this)
 {
-    LinkedList* cloneArray = NULL;
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
+    LinkedList* cloneArray = NULL;
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
-///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
 
+///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return cloneArray;
 }
 
@@ -515,11 +517,11 @@ LinkedList* ll_clone(LinkedList* this)
  */
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
-    int returnAux =-1;
 ///:::::::::::::VARIABLES:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
+    int returnAux =-1;
 ///:::::::::::::::::::::::CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
-///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
 
+///:::::::::::::::::::::::END CODE:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::///
     return returnAux;
 }
 
